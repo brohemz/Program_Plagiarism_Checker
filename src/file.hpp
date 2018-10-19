@@ -7,6 +7,7 @@ class File{
 	private:
 	int percentageMatch;
 	std::vector<int> *mData;
+	//Add properties vector later
 
 	public:
 
