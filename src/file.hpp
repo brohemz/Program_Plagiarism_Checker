@@ -3,11 +3,15 @@
 
 #import <vector>
 
+#include <string>
+#include <stdlib.h>
+
 class File{
 	private:
 	int percentageMatch;
-	std::vector<int> *mData;
+	std::vector<std::pair<std::string, bool>> *mData;
 	//Add properties vector later
+	bool fill(const std::string file_name);
 
 	public:
 

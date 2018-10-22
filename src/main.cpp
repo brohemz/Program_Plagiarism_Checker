@@ -1,10 +1,16 @@
 #include <stdlib.h>
 #include <iostream>
-#include "array.hpp"
+#include "data.hpp"
 
 using namespace std;
 
 int main(int argc, char *argv[]) {
-    /* You may write manual tests here. */
-    
+
+	Data dataObj;
+
+    for(int i = 1; i < argc; i++){
+		dataObj.newFile(argv[i]);
+	}
+
+	dataObj.printAll();
 }
