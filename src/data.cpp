@@ -21,6 +21,8 @@ void Data::printAll(){
 }
 
 Data::~Data(){
+	for(int i = 0; i < mFiles.size(); i++)
+		delete mFiles[i];
 }
 
 
