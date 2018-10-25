@@ -1,10 +1,11 @@
 #ifndef FILE_H
 #define FILE_H
 
-#import <vector>
+#include <vector>
 
 #include <string>
 #include <stdlib.h>
+#include <iostream>
 
 class File{
 	private:
@@ -22,6 +23,8 @@ class File{
 	int operator[](const int pos);
 
 	bool operator==(File fi) const;
+
+	void print();
 
 	~File();
 

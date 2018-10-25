@@ -1,5 +1,6 @@
 #ifdef FILE_H
 #include <stdio.h>
+#include "file.hpp"
 
 
 //	Constructor - reads file into vector
@@ -12,14 +13,15 @@ File::File (const std::string file_name){
 
 
 //	Fills vector mData with each word from given file
-bool fill(const std::string file_name){
+bool File::fill(const std::string file_name){
 	//Input variables
 	char rover;
 	std::string word = "";
 
+
 	//Input from file to mData for file
 	FILE *file;
-	file = fopen(file_name, "r");
+	file = fopen(file_name.c_str(), "r");
 
 	if(!file){
 		std::cout << "Cant open " << file_name << '\n';
@@ -39,6 +41,16 @@ bool fill(const std::string file_name){
 	fclose(file);
 	return true;
 }
+
+void File::print(){
+	for(std::pair<std::string, bool> pair : *mData)
+		std::cout << pair.first << " ";
+}
+
+File::~File(){
+	delete mData;
+}
+
 
 
 #endif
