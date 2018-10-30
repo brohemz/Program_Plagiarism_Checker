@@ -12,6 +12,7 @@ bool Data::newFile(const std::string file_name){
 	mFiles.push_back(new File(file_name));
 }
 
+
 void Data::printAll(){
 	for(File* fi : mFiles){
 		fi->print();
@@ -19,6 +20,13 @@ void Data::printAll(){
 	}
 
 }
+
+std::vector<File*> Data::getAllFiles(){
+	return mFiles;
+}
+
+
+
 
 Data::~Data(){
 	for(int i = 0; i < mFiles.size(); i++)

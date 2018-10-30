@@ -15,6 +15,7 @@ class Data{
 	Data();
 	bool newFile(const std::string file_name);
 	void printAll();
+	std::vector<File*> getAllFiles();
 	~Data();
 };
 
