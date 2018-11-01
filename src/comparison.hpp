@@ -18,6 +18,8 @@ class Comparison{
 	bool crossmatch(std::vector<File*> files);
 
 	public:
+
+	~Comparison();
 	Comparison();
 
 	//	Comparison for History

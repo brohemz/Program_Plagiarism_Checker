@@ -10,10 +10,11 @@
 class File{
 	private:
 	int percentageMatch;
+	std::string mFileName;
 	std::vector<std::pair<std::string, bool>> *mData;
 	int mSize;
 	//Add properties vector later
-	bool fill(const std::string file_name);
+	int fillFile(const std::string file_name);
 
 	public:
 
@@ -26,6 +27,8 @@ class File{
 	bool operator==(File* fi) const;
 
 	int getWordCount();
+
+	std::string getFileName();
 
 	bool markFile(int pos);
 

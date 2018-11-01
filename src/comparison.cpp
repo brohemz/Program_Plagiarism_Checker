@@ -3,6 +3,7 @@
 #include "comparison.hpp"
 #include "file.hpp"
 #include "data.hpp"
+#include <algorithm>
 
 
 
@@ -14,20 +15,23 @@ bool Comparison::compare(File* file1, File* file2){
 
 	if(fillup(std::vector<File*> {file1, file2})){
 		crossmatch(std::vector<File*> {file1, file2});
-		// for(auto iter : *mData){
-		// 	for(auto it = iter->begin(); it != iter->end(); it++){
-		// 		for(int i = 0; i < (it->second).size(); i++){
-		// 			std::cout << it->first << " : " << (it->second)[i] << "\n";
-		// 		}
-		// 	}
-		// }
-
 
 		return true;
 	}
 
 	return false;
 
+}
+
+bool Comparison::compare(Data* dataObj){
+	std::vector<File*> files = dataObj->getAllFiles();
+	if(fillup(files)){
+		crossmatch(files);
+
+		return true;
+	}
+
+	return false;
 }
 
 bool Comparison::fillup(std::vector<File*> files){
@@ -38,9 +42,13 @@ bool Comparison::fillup(std::vector<File*> files){
 	for(File* file : files){
 		auto file_map = new std::unordered_map<std::string, std::vector<int>>;
 		for(int i = 0; i < file->getWordCount(); i++){
-			auto found = file_map->find((*file)[i]);
+			std::string str = (*file)[i];
+			str.erase(std::remove(str.begin(), str.end(), '\t'), str.end());
+			str.erase(std::remove(str.begin(), str.end(), ' '), str.end());
+			str.erase(std::remove(str.begin(), str.end(), '\n'), str.end());
+			auto found = file_map->find(str);
 			if(found == file_map->end()){
-				file_map->insert(std::make_pair((*file)[i], std::vector<int>{i}));
+				file_map->insert(std::make_pair(str, std::vector<int>{i}));
 			}else{
 				(found->second).push_back(i);
 			}
@@ -106,6 +114,13 @@ bool Comparison::crossmatch(std::vector<File*> files){
 	}
 
 
+}
+
+Comparison::~Comparison(){
+	for(auto iter : *mData){
+		delete iter;
+	}
+	delete mData;
 }
 
 
