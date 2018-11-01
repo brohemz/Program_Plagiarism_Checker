@@ -87,7 +87,7 @@ bool Comparison::crossmatch(std::vector<File*> files){
 							}
 
 							if(count == 4){
-								for(int recount = 1; recount <= 4; recount++){
+								for(int recount = 0; recount <= 4; recount++){
 									file->markFile(pos + recount);
 									files[i]->markFile(compPos + recount);
 								}
