@@ -79,15 +79,17 @@ bool Comparison::crossmatch(std::vector<File*> files){
 						while(compPos + count < files[i]->getWordCount() && pos + count < file->getWordCount() && !(files[i]->isMarked(compPos))){
 
 							if((*files[i])[compPos+count]!= (*file)[pos+count]){
-								if(count >= 4){
-									file->markFile(pos);
-									files[i]->markFile(compPos);
+								if(count > 4){
+									for(int recount = 0; recount < count; recount++){
+										file->markFile(pos + recount);
+										files[i]->markFile(compPos + recount);
+									}
 								}
 								break;
 							}
 
 							if(count == 4){
-								for(int recount = 0; recount <= 4; recount++){
+								for(int recount = 1; recount <= count; recount++){
 									file->markFile(pos + recount);
 									files[i]->markFile(compPos + recount);
 								}
@@ -98,6 +100,13 @@ bool Comparison::crossmatch(std::vector<File*> files){
 								files[i]->markFile(compPos + count);
 
 							}
+							if(pos + count == file->getWordCount() - 1 || compPos + count == files[i]->getWordCount() - 1){
+								if(count > 4){
+									file->markFile(pos);
+									files[i]->markFile(compPos);
+								}
+							}
+
 							count++;
 
 						}
