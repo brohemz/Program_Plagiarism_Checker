@@ -24,6 +24,8 @@ DEFINES += QT_DEPRECATED_WARNINGS
 
 CONFIG += C++11
 
+QMAKE_MACOSX_DEPLOYMENT_TARGET = 10.7
+
 SOURCES += \
         main.cpp \
         mainwindow.cpp \
