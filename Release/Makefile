@@ -13,8 +13,8 @@ MAKEFILE      = Makefile
 CC            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang
 CXX           = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
 DEFINES       = -DQT_DEPRECATED_WARNINGS -DQT_NO_DEBUG -DQT_WIDGETS_LIB -DQT_GUI_LIB -DQT_CORE_LIB
-CFLAGS        = -pipe -O2 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.11 -Wall -W -fPIC $(DEFINES)
-CXXFLAGS      = -pipe -stdlib=libc++ -O2 -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.11 -Wall -W -fPIC $(DEFINES)
+CFLAGS        = -pipe -O2 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.7 -Wall -W -fPIC $(DEFINES)
+CXXFLAGS      = -pipe -stdlib=libc++ -O2 -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.7 -Wall -W -fPIC $(DEFINES)
 INCPATH       = -I../Beta_Build -I. -I../../Qt/5.11.0/clang_64/lib/QtWidgets.framework/Headers -I../../Qt/5.11.0/clang_64/lib/QtGui.framework/Headers -I../../Qt/5.11.0/clang_64/lib/QtCore.framework/Headers -I. -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/OpenGL.framework/Headers -I/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk/System/Library/Frameworks/AGL.framework/Headers -I. -I../../Qt/5.11.0/clang_64/mkspecs/macx-clang -F/Users/ryan/Qt/5.11.0/clang_64/lib
 QMAKE         = /Users/ryan/Qt/5.11.0/clang_64/bin/qmake
 DEL_FILE      = rm -f
@@ -37,7 +37,7 @@ COMPRESS      = gzip -9f
 DISTNAME      = Beta_Build1.0.0
 DISTDIR = /Users/ryan/SYS/build-Beta_Build-Desktop_Qt_5_11_0_clang_64bit-Release/.tmp/Beta_Build1.0.0
 LINK          = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++
-LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.11 -Wl,-rpath,@executable_path/Frameworks -Wl,-rpath,/Users/ryan/Qt/5.11.0/clang_64/lib
+LFLAGS        = -stdlib=libc++ -headerpad_max_install_names $(EXPORT_ARCH_ARGS) -Wl,-syslibroot,/Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.7 -Wl,-rpath,@executable_path/Frameworks -Wl,-rpath,/Users/ryan/Qt/5.11.0/clang_64/lib
 LIBS          = $(SUBLIBS) -F/Users/ryan/Qt/5.11.0/clang_64/lib -framework QtWidgets -framework QtGui -framework QtCore -framework DiskArbitration -framework IOKit -framework OpenGL -framework AGL 
 AR            = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ar cq
 RANLIB        = /Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/ranlib -s
@@ -194,7 +194,6 @@ DIST          = ../../Qt/5.11.0/clang_64/mkspecs/features/spec_pre.prf \
 		../../Qt/5.11.0/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.11.0/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.11.0/clang_64/mkspecs/features/spec_post.prf \
-		../Beta_Build/.qmake.stash \
 		../../Qt/5.11.0/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.11.0/clang_64/mkspecs/features/mac/sdk.prf \
 		../../Qt/5.11.0/clang_64/mkspecs/features/toolchain.prf \
@@ -381,7 +380,6 @@ Makefile: ../Beta_Build/Beta_Build.pro ../../Qt/5.11.0/clang_64/mkspecs/macx-cla
 		../../Qt/5.11.0/clang_64/mkspecs/features/qt_config.prf \
 		../../Qt/5.11.0/clang_64/mkspecs/macx-clang/qmake.conf \
 		../../Qt/5.11.0/clang_64/mkspecs/features/spec_post.prf \
-		.qmake.stash \
 		../../Qt/5.11.0/clang_64/mkspecs/features/exclusive_builds.prf \
 		../../Qt/5.11.0/clang_64/mkspecs/features/mac/sdk.prf \
 		../../Qt/5.11.0/clang_64/mkspecs/features/toolchain.prf \
@@ -552,7 +550,6 @@ Makefile: ../Beta_Build/Beta_Build.pro ../../Qt/5.11.0/clang_64/mkspecs/macx-cla
 ../../Qt/5.11.0/clang_64/mkspecs/features/qt_config.prf:
 ../../Qt/5.11.0/clang_64/mkspecs/macx-clang/qmake.conf:
 ../../Qt/5.11.0/clang_64/mkspecs/features/spec_post.prf:
-.qmake.stash:
 ../../Qt/5.11.0/clang_64/mkspecs/features/exclusive_builds.prf:
 ../../Qt/5.11.0/clang_64/mkspecs/features/mac/sdk.prf:
 ../../Qt/5.11.0/clang_64/mkspecs/features/toolchain.prf:
@@ -601,7 +598,7 @@ Beta_Build.app/Contents/Resources/empty.lproj:
 Beta_Build.app/Contents/Info.plist: 
 	@test -d Beta_Build.app/Contents || mkdir -p Beta_Build.app/Contents
 	@$(DEL_FILE) Beta_Build.app/Contents/Info.plist
-	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,\$${QMAKE_SHORT_VERSION},1.0,g" -e "s,@FULL_VERSION@,1.0.0,g" -e "s,\$${QMAKE_FULL_VERSION},1.0.0,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" -e "s,@BUNDLEIDENTIFIER@,com.yourcompany.Beta-Build,g" -e "s,\$${PRODUCT_BUNDLE_IDENTIFIER},com.yourcompany.Beta-Build,g" -e "s,\$${MACOSX_DEPLOYMENT_TARGET},10.11,g" -e "s,\$${IPHONEOS_DEPLOYMENT_TARGET},,g" -e "s,\$${TVOS_DEPLOYMENT_TARGET},,g" -e "s,\$${WATCHOS_DEPLOYMENT_TARGET},,g" -e "s,@ICON@,appicon.icns,g" -e "s,\$${ASSETCATALOG_COMPILER_APPICON_NAME},appicon.icns,g" -e "s,@EXECUTABLE@,Beta_Build,g" -e "s,@LIBRARY@,Beta_Build,g" -e "s,\$${EXECUTABLE_NAME},Beta_Build,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" ../../Qt/5.11.0/clang_64/mkspecs/macx-clang/Info.plist.app >Beta_Build.app/Contents/Info.plist
+	@sed -e "s,@SHORT_VERSION@,1.0,g" -e "s,\$${QMAKE_SHORT_VERSION},1.0,g" -e "s,@FULL_VERSION@,1.0.0,g" -e "s,\$${QMAKE_FULL_VERSION},1.0.0,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" -e "s,@BUNDLEIDENTIFIER@,com.yourcompany.Beta-Build,g" -e "s,\$${PRODUCT_BUNDLE_IDENTIFIER},com.yourcompany.Beta-Build,g" -e "s,\$${MACOSX_DEPLOYMENT_TARGET},10.7,g" -e "s,\$${IPHONEOS_DEPLOYMENT_TARGET},,g" -e "s,\$${TVOS_DEPLOYMENT_TARGET},,g" -e "s,\$${WATCHOS_DEPLOYMENT_TARGET},,g" -e "s,@ICON@,appicon.icns,g" -e "s,\$${ASSETCATALOG_COMPILER_APPICON_NAME},appicon.icns,g" -e "s,@EXECUTABLE@,Beta_Build,g" -e "s,@LIBRARY@,Beta_Build,g" -e "s,\$${EXECUTABLE_NAME},Beta_Build,g" -e "s,@TYPEINFO@,????,g" -e "s,\$${QMAKE_PKGINFO_TYPEINFO},????,g" ../../Qt/5.11.0/clang_64/mkspecs/macx-clang/Info.plist.app >Beta_Build.app/Contents/Info.plist
 Beta_Build.app/Contents/Resources/appicon.icns: ../Beta_Build/appicon.icns
 	@test -d Beta_Build.app/Contents/Resources/ || mkdir -p Beta_Build.app/Contents/Resources/
 	@$(DEL_FILE) Beta_Build.app/Contents/Resources/appicon.icns
@@ -633,7 +630,6 @@ clean: compiler_clean
 
 distclean: clean 
 	-$(DEL_FILE) -r Beta_Build.app
-	-$(DEL_FILE) .qmake.stash
 	-$(DEL_FILE) Makefile
 
 
@@ -667,7 +663,7 @@ compiler_moc_predefs_make_all: moc_predefs.h
 compiler_moc_predefs_clean:
 	-$(DEL_FILE) moc_predefs.h
 moc_predefs.h: ../../Qt/5.11.0/clang_64/mkspecs/features/data/dummy.cpp
-	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.11 -Wall -W -dM -E -o moc_predefs.h ../../Qt/5.11.0/clang_64/mkspecs/features/data/dummy.cpp
+	/Applications/Xcode.app/Contents/Developer/Toolchains/XcodeDefault.xctoolchain/usr/bin/clang++ -pipe -stdlib=libc++ -O2 -std=gnu++11 $(EXPORT_ARCH_ARGS) -isysroot /Applications/Xcode.app/Contents/Developer/Platforms/MacOSX.platform/Developer/SDKs/MacOSX10.14.sdk -mmacosx-version-min=10.7 -Wall -W -dM -E -o moc_predefs.h ../../Qt/5.11.0/clang_64/mkspecs/features/data/dummy.cpp
 
 compiler_moc_header_make_all: moc_mainwindow.cpp
 compiler_moc_header_clean:
