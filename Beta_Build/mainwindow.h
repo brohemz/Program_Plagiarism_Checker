@@ -25,6 +25,7 @@ public:
 
 public slots:
     void buttonClicked();
+    void runHistoryView();
 
 private:
     Ui::MainWindow *ui;
@@ -34,6 +35,7 @@ private:
     Data *mDataObj;
     bool hasHistory;
     bool runHistoryCheck();
+
 
 
 };

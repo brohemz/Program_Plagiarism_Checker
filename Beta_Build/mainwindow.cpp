@@ -166,7 +166,7 @@ void MainWindow::run(){
 
     }
     ui->textBrowser_2->setHtml(ui->textBrowser_2->toHtml() + temp);
-
+    ui->label->setText(QString().fromStdString("Percentage Match: " + std::to_string(files[0]->getPercentage())));
 
     setPage(1);
 
@@ -181,11 +181,13 @@ bool MainWindow::runHistoryCheck(){
     comp.compare(mDataObj);
 
     std::vector<File*> files = mDataObj->getAllFiles();
-    setPage(2);
+
     for(int i = 1; i < files.size(); i++){
         QString name = QString().fromStdString("button_history_" + std::to_string(i));
         QPushButton *button = new QPushButton(name);
-        button->setText(QString().fromStdString("File: " + files[i]->getFileName()));
+        connect (button, SIGNAL( clicked() ), this, SLOT( runHistoryView() ) );
+        button->setText(QString().fromStdString("File: " + files[i]->getFileName()) + "\n% Match:" + QString().fromStdString(std::to_string(files[i]->getPercentage())));
+
         ui->gridLayout_2->addWidget(button);
 
         QString words = "";
@@ -194,9 +196,70 @@ bool MainWindow::runHistoryCheck(){
         }
         ui->textBrowser_4->setHtml(words);
     }
-
+    setPage(2);
 
     mDataObj->saveFiles();
+}
+
+void MainWindow::runHistoryView(){
+    QPushButton* button = qobject_cast<QPushButton*>(sender());
+
+    std::string file = button->text().toStdString();
+    file = file.substr(file.find(":") + 2, file.find("%") - 7);
+
+    std::vector<File*> files = mDataObj->getAllFiles();
+
+    File* ptr;
+
+    std::cout << file << "wow" << "\n";
+
+    setPage(3);
+    for(int i = 1; i < files.size(); i++){
+        if(files[i]->getFileName() == file){
+            ptr = files[i];
+            break;
+        }
+    }
+
+
+
+    QString temp = "";
+    for(int i = 0; i < files[0]->getWordCount(); i++){
+        std::pair<std::string, bool> *pair = files[0]->getPair(i);
+
+
+        if(pair->second){
+            temp += "<style> b {color:#FFF979}</style><b>" + QString().fromStdString(pair->first) + "</b>";
+        }else{
+            temp += QString().fromStdString(pair->first);
+        }
+
+
+    }
+    ui->textBrowser_7->setHtml(ui->textBrowser->toHtml() + temp);
+
+    temp = "";
+    for(int i = 0; i < ptr->getWordCount(); i++){
+        std::pair<std::string, bool> *pair = ptr->getPair(i);
+
+        if(pair->second){
+            temp += "<style> b {color:#FFF979}</style><b>" + QString().fromStdString(pair->first) + "</b>";
+        }else{
+            temp += QString().fromStdString(pair->first);
+        }
+
+    }
+
+    ui->textBrowser_8->setHtml(ui->textBrowser_2->toHtml() + temp);
+    ui->label_3->setText(QString().fromStdString("Percentage Match: " + std::to_string(ptr->getPercentage())));
+
+
+
+
+
+
+
+
 }
 
 

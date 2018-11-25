@@ -8,7 +8,8 @@
 File::File (const std::string file_name){
 	mData = new std::vector<std::pair<std::string, bool>>();
 	mSize = mData->size();
-	percentageMatch = -1;
+    percentageMatch = 0;
+    mMarked = 0;
     std::string fn = file_name;
     mFileName = fn.substr(fn.find_last_of('/') + 1);
 
@@ -30,6 +31,7 @@ File::File(const std::string text, const std::string file_name){
 
     mData = new std::vector<std::pair<std::string, bool>>();
     mSize = mData->size();
+    mMarked = 0;
     std::string fn = file_name;
     mFileName = fn.substr(fn.find_last_of('/') + 1);
 
@@ -46,7 +48,7 @@ File::File(const std::string text, const std::string file_name){
             count++;
 
         }
-        std::cerr << c;
+
         word += c;
         if(i == text.length() - 1){
             mData->push_back(std::make_pair(word, false));
@@ -127,6 +129,10 @@ std::vector<std::string> File::getMarked(){
     return marked;
 }
 
+int File::getPercentage(){
+     return percentageMatch;
+}
+
 std::string File::operator[](const int pos){
 	return mData->at(pos).first;
 }
@@ -156,7 +162,12 @@ std::string File::getFileName(){
 }
 
 bool File::markFile(int pos){
+    if(mData->at(pos).second == false)
+        mMarked++;
 	mData->at(pos).second = true;
+
+    percentageMatch = (double(mMarked) / double(mSize)) * 100;
+    //std::cerr << mMarked << " " << mSize << " " << percentageMatch << "\n";
     return true;
 }
 

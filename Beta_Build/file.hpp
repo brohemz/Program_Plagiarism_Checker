@@ -15,8 +15,11 @@ class File{
 	int mSize;
 	//Add properties vector later
 	int fillFile(const std::string file_name);
+    int mMarked;
 
 	public:
+
+    int getPercentage();
 
 	File(const std::string file_name);
 
