@@ -1,9 +1,5 @@
 # Program_Plagiarism_Checker
 
-*Work in Progress*
-
-Beta-Release phase:
-
 	Implemented a simple GUI with primitive history functionality.
 
 How to Install (MAC OS X)
